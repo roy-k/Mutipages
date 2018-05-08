@@ -13,16 +13,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const {htmlPluginArr} = require('./pages')
 
-// baseWebpackConfig.module.rules[0].use = ExtractTextPlugin.extract({
-//     fallback: "style-loader",
-//     use: [{
-//         loader: 'css-loader',
-//         options: {
-//             minimize: true //css压缩
-//         }
-//     }, 'postcss-loader', 'stylus-loader'],
-//     publicPath: '//static.yk.qq.com/pictures/open/'
-// });
+baseWebpackConfig.module.rules[0].use = ExtractTextPlugin.extract({
+    fallback: "style-loader",
+    use: [{
+        loader: 'css-loader',
+        options: {
+            minimize: true //css压缩
+        }
+    }, 'postcss-loader', 'stylus-loader'],
+    publicPath: '//static.yk.qq.com/pictures/open/'
+});
 
 
 // var multipleHtml = [{
@@ -60,14 +60,6 @@ webpackConfig = merge(baseWebpackConfig, {
     },
 
     plugins: [
-        // new HtmlWebpackPlugin({
-        //     template: '../src/m.html',
-        //     inject: 'body',
-        //     minify: {
-        //         html: true
-        //     },
-        //     hash: false
-        // }),
         ...htmlPluginArr.map(({filename, template, chunks}) => {
             return new HtmlWebpackPlugin({
                 filename, template, chunks
@@ -77,7 +69,7 @@ webpackConfig = merge(baseWebpackConfig, {
             root: path.resolve(__dirname, '../')
         }),
         
-        new ExtractTextPlugin('css/h5_.[hash:6].min.css'),
+        new ExtractTextPlugin('static/css/[hash:6].min.css'),
         
 
         // 编译时(compile time)插件
