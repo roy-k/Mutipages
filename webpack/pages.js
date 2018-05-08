@@ -11,11 +11,11 @@ const htmlPluginArr = []
 pages.map(v => {
     entrys[v] = path.resolve(__dirname, `../src/pages/${v}/js/app.js`)
     htmlPluginArr.push({
-        filename: `pages/${v}/page.html`,
-        template: path.resolve(__dirname, `../src/pages/${v}/index.html`),
+        filename: `pages/${v}/index.html`,
+        template: path.resolve(__dirname, `../src/common/template/entry/${v}.pug`),
         chunks: [v],
         // hash: true, // 为静态资源生成hash值
-        // minify: true,
+        minify: true,
         // xhtml: true,
       })
 })

@@ -1,2 +1,2 @@
 import '../css/app.styl'
-console.log('home');
+console.log('home test');

@@ -19,7 +19,7 @@ dist
 
 # Windows shortcuts
 *.lnk
-
+package-lock.json
 *.sublime-project
 *.sublime-workspace
 npm-debug.log

@@ -1,6 +1,6 @@
 # 问题点
 
-1. css loader extra配置 是在common吗 参考react
+1. 开发环境图片img问题
 
-2. 先写死html配置
+2. 不自动刷新, 替换但未刷新, js可以
 
