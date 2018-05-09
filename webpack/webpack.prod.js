@@ -13,11 +13,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const {htmlPluginArr} = require('./pages')
 
-// baseWebpackConfig.module.rules[0].use = ExtractTextPlugin.extract({
-// fallback: "style-loader",     use: [{         loader: 'css-loader',
-// options: {             minimize: true //css压缩         }     },
-// 'postcss-loader', 'stylus-loader'],     publicPath:
-// '//static.yk.qq.com/pictures/open/' });
+// baseWebpackConfig.module.rules[0].use = ExtractTextPlugin.extract({ fallback:
+// "style-loader",     use: [{         loader: 'css-loader', options: {
+//    minimize: true //css压缩         }     }, 'postcss-loader',
+// 'stylus-loader'],     publicPath: '//static.yk.qq.com/pictures/open/' });
 
 webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
@@ -33,14 +32,18 @@ webpackConfig = merge(baseWebpackConfig, {
                 test: /\.css|styl$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true //css压缩
-                        }
-                    }, 'postcss-loader', 'stylus-loader'],
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true //css压缩
+                            }
+                        },
+                        'postcss-loader',
+                        'stylus-loader'
+                    ]
                 })
-            },
+            }
         ]
     },
     devtool: false,

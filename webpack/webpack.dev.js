@@ -22,23 +22,11 @@ module.exports = merge(baseWebpackConfig, {
     },
     module: {
         rules: [
+            // common 配置ex disable无效
             {
                 test: /\.css|styl$/,
                 use: ["style-loader", "css-loader", "postcss-loader", "stylus-loader"]
             },
-            // {
-            //     test: /\.css|styl$/,
-            //     // use: ["style-loader", "css-loader", "postcss-loader", "stylus-loader"],
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: "style-loader",
-            //         use: [{
-            //             loader: 'css-loader',
-            //             options: {
-            //                 minimize: true //css压缩
-            //             }
-            //         }, 'postcss-loader', 'stylus-loader'],
-            //     })
-            // },
         ]
     },
 
@@ -62,9 +50,6 @@ module.exports = merge(baseWebpackConfig, {
     },
 
     plugins: [
-
-        // new DashboardPlugin({ port: 3008 }),
-
         ...htmlPluginArr.map(({filename, template, chunks}) => {
             return new HtmlWebpackPlugin({filename, template, chunks})
         }),
