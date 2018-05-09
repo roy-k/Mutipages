@@ -1,5 +1,5 @@
 var path = require('path');
-var webpack =require('webpack');
+var webpack = require('webpack');
 var merge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,16 +14,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {htmlPluginArr} = require('./pages')
 
 // baseWebpackConfig.module.rules[0].use = ExtractTextPlugin.extract({
-//     fallback: "style-loader",
-//     use: [{
-//         loader: 'css-loader',
-//         options: {
-//             minimize: true //css压缩
-//         }
-//     }, 'postcss-loader', 'stylus-loader'],
-//     publicPath: '//static.yk.qq.com/pictures/open/'
-// });
-
+// fallback: "style-loader",     use: [{         loader: 'css-loader',
+// options: {             minimize: true //css压缩         }     },
+// 'postcss-loader', 'stylus-loader'],     publicPath:
+// '//static.yk.qq.com/pictures/open/' });
 
 webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
@@ -31,7 +25,23 @@ webpackConfig = merge(baseWebpackConfig, {
         path: path.resolve(__dirname, '../dist'),
         filename: 'static/js/[name].[hash:6].js',
         publicPath: '//static.yk.qq.com/pictures/open/',
-        chunkFilename: "static/js/[name].[hash:6].js",
+        chunkFilename: "static/js/[name].[hash:6].js"
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css|styl$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [{
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true //css压缩
+                        }
+                    }, 'postcss-loader', 'stylus-loader'],
+                })
+            },
+        ]
     },
     devtool: false,
     optimization: {
@@ -42,7 +52,7 @@ webpackConfig = merge(baseWebpackConfig, {
             cacheGroups: {
                 vender: {
                     test: 'vendor',
-                    name: 'vendor',
+                    name: 'vendor'
                 }
             }
         }
@@ -54,20 +64,18 @@ webpackConfig = merge(baseWebpackConfig, {
         }),
 
         ...htmlPluginArr.map(({filename, template, chunks}) => {
-            return new HtmlWebpackPlugin({
-                filename, template, chunks
-            })
+            return new HtmlWebpackPlugin({filename, template, chunks})
         }),
 
-        new ExtractTextPlugin('static/css/[hash:6].min.css'),
+        new ExtractTextPlugin('static/css/[name].[hash:6].min.css'),
 
         new ImageminPlugin({
             disable: process.env.NODE_ENV !== 'production',
             test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
             pngquant: {
-              quality: '95-100'
+                quality: '95-100'
             }
-          })
+        })
     ]
 });
 
