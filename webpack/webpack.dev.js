@@ -7,6 +7,8 @@ var autoprefixer = require('autoprefixer');
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 var baseWebpackConfig = require('./webpack.common');
 
+var DashboardPlugin = require('webpack-dashboard/plugin');
+
 const {htmlPluginArr} = require('./pages')
 
 
@@ -28,9 +30,10 @@ module.exports = merge(baseWebpackConfig, {
 
         host: 'localhost',
 
-        port: 3000,
+        port: 3008,
 
         inline: true,
+        quiet: true,
 
         publicPath: '/',
         // 和上文output的"publicPath"值保持一致
@@ -39,6 +42,8 @@ module.exports = merge(baseWebpackConfig, {
     },
 
     plugins: [
+
+        new DashboardPlugin({ port: 3008 }),
 
         ...htmlPluginArr.map(({filename, template, chunks}) => {
             return new HtmlWebpackPlugin({
