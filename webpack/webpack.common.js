@@ -2,10 +2,6 @@ var path = require('path');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const isProd = process.env.NODE_ENV === 'production'; // true or false
-console.log('====================================');
-console.log(isProd);
-console.log('====================================');
 const {entrys} = require('./pages')
 
 module.exports = {
@@ -21,19 +17,6 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/
             },
-            // {
-            //     test: /\.css|styl$/,
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: "style-loader",
-            //         use: [{
-            //             loader: 'css-loader',
-            //             options: {
-            //                 minimize: true //css压缩
-            //             }
-            //         }, 'postcss-loader', 'stylus-loader'],
-            //         disable: !isProd  无效???
-            //     })
-            // },
             {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url-loader?limit=8192&name=static/img/h5_[hash:8].[name].[ext]'
@@ -47,7 +30,12 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.json', 'styl']
+        extensions: ['.js', '.json', '.styl', '.css'],
+        alias: {
+            reset$: path.resolve(__dirname, '../src/common/css/reset.css'),
+            common$: path.resolve(__dirname, '../src/common/css/common.css'),
+            libs: path.resolve(__dirname, '../src/common/js/libs'),
+        }
     },
     plugins: []
 }

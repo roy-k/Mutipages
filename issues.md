@@ -5,7 +5,7 @@
 使用require: img(src=require('../../common/images/door@3x_center.png'), alt='')
 
 
-2. 不自动刷新, 替换但未刷新, js可以
+2. 不自动刷新, 替换但未刷新 Nothing hot updated, js可以
 
 > ExtractTextPlugin 的问题
 
@@ -15,3 +15,7 @@
 3. 样式打包到一个js文件 加上name命名
 
 new ExtractTextPlugin('static/css/[name].[hash:6].min.css'),
+
+4. 图标拷贝
+
+5. 面向属性css命名
