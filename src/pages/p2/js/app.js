@@ -1,5 +1,3 @@
-console.log('home');
-
 import 'reset'
 import 'common'
 import 'public'

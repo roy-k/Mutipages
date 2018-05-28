@@ -2,8 +2,8 @@
   "name": "h5-official",
   "version": "0.0.0",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/webpack.dev.js --open",
-    "dev": "webpack-dev-server --inline --hot --config ./webpack/webpack.dev.js --open",
+    "start": "webpack-dev-server --config ./webpack/webpack.dev.js",
+    "dev": "webpack-dev-server --inline --hot --config ./webpack/webpack.dev.js",
     "build": "webpack --config ./webpack/webpack.prod.js"
   },
   "devDependencies": {
@@ -38,10 +38,10 @@
     "webpack-cli": "^2.0.15",
     "webpack-dashboard": "^1.1.1",
     "webpack-dev-server": "^3.1.4",
-    "webpack-merge": "^4.1.2"
+    "webpack-merge": "^4.1.2",
+    "opn": "^5.3.0"
   },
   "dependencies": {
-    "graphql-request": "^1.5.2",
     "jquery": "^3.3.1"
   }
 }

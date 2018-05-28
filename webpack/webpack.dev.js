@@ -6,6 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 var baseWebpackConfig = require('./webpack.common');
+const opn = require('opn');
 
 // var DashboardPlugin = require('webpack-dashboard/plugin');
 
@@ -38,15 +39,18 @@ module.exports = merge(baseWebpackConfig, {
 
         host: 'localhost',
 
-        port: 3008,
+        port: 3000,
 
         inline: true,
-        quiet: true,
+        // quiet: true,
 
         publicPath: '/',
         // 和上文output的"publicPath"值保持一致
 
-        historyApiFallback: true
+        historyApiFallback: true,
+        after() {
+            opn('http://localhost:3000/pages/home/');
+        }
     },
 
     plugins: [

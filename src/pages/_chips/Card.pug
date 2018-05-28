@@ -1,0 +1,11 @@
+//- o (textSide, title, infos[], imgSize, imgsrc)
+//- 
+mixin card(o, index)
+    div.card.tc
+        div
+            img.CD-icon(src=require('img/' + index + '.png'), alt='')
+        div
+            .CDtitle.lh1= o.title
+            each item in o.infos
+                p.CDinfo.lh1= item
+

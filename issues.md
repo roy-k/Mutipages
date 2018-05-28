@@ -19,3 +19,5 @@ new ExtractTextPlugin('static/css/[name].[hash:6].min.css'),
 4. 图标拷贝
 
 5. 面向属性css命名
+
+6. 自动生成入口文件

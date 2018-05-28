@@ -1,0 +1,11 @@
+
+mixin textImg(o, index, page)
+    .IT-Row(class=index%2==0?'':'IT-Row-B')
+        div.IT(class=o.textSide=='left'?'Tl':'Tr tr')
+            div.IT-tbox
+                .TItitle.lh1= o.title
+                .TIline.dib
+                each item in o.infos
+                    p.TIinfo.lh1= item
+            div
+                img(src=require('img/C-' + page+ '-IT' + index + '.png'), alt='', class=o.imgSize)

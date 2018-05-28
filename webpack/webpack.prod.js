@@ -13,18 +13,13 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const {htmlPluginArr} = require('./pages')
 
-// baseWebpackConfig.module.rules[0].use = ExtractTextPlugin.extract({ fallback:
-// "style-loader",     use: [{         loader: 'css-loader', options: {
-//    minimize: true //css压缩         }     }, 'postcss-loader',
-// 'stylus-loader'],     publicPath: '//static.yk.qq.com/pictures/open/' });
-
 webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'static/js/[name].[hash:6].js',
-        publicPath: '//static.yk.qq.com/pictures/open/',
-        chunkFilename: "static/js/[name].[hash:6].js"
+        filename: 'js/[name].[hash:6].js',
+        publicPath: '//static.com/',
+        chunkFilename: "js/[name].[hash:6].js"
     },
     module: {
         rules: [
@@ -47,19 +42,19 @@ webpackConfig = merge(baseWebpackConfig, {
         ]
     },
     devtool: false,
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            minChunks: 1,
-            minSize: 0,
-            cacheGroups: {
-                vender: {
-                    test: 'vendor',
-                    name: 'vendor'
-                }
-            }
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all',
+    //         minChunks: 1,
+    //         minSize: 0,
+    //         cacheGroups: {
+    //             vender: {
+    //                 test: 'vendor',
+    //                 name: 'vendor'
+    //             }
+    //         }
+    //     }
+    // },
 
     plugins: [
         new CleanWebpackPlugin(['dist'], {
@@ -70,7 +65,7 @@ webpackConfig = merge(baseWebpackConfig, {
             return new HtmlWebpackPlugin({filename, template, chunks})
         }),
 
-        new ExtractTextPlugin('static/css/[name].[hash:6].min.css'),
+        new ExtractTextPlugin('css/[name].[hash:6].min.css'),
 
         new ImageminPlugin({
             disable: process.env.NODE_ENV !== 'production',

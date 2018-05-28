@@ -1,0 +1,9 @@
+mixin nav(index)
+    .nav.auto
+        h1.logo.l logo
+        ul.r.f18
+            li.l: a.link(href=index==0 ? "javascript:;" : "../home/"): span(class=index==0 ? 'active' : '') 首页
+            li.l: a.link(href=index==1 ? "javascript:;" :  "../p1/"): span(class=index==1 ? 'active' : '') p1
+            li.l: a.link(href=index==2 ? "javascript:;" : "../p2/"): span(class=index==2 ? 'active' : '') p2
+            li.l: a.link(href=index==3 ? "javascript:;" : "../p3/"): span(class=index==3 ? 'active' : '') p3
+                
