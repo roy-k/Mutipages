@@ -1,6 +1,6 @@
 # 利用模板技术(pug), 搭建低复杂度/组件化的多页面应用
 
-> [本项目](https://github.com/roy-k/pugMutipages)是根据webpack多页面配置, 结合pug模板能力实现.
+> [本项目](https://github.com/roy-k/Mutipages)是根据webpack多页面配置, 结合pug模板能力实现.
 
 > 适合官网类, 偏静态, 含重复布局的项目. 无框架
 
